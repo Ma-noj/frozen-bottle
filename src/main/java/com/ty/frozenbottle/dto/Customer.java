@@ -11,10 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-import com.sun.istack.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 @Entity
@@ -25,14 +27,16 @@ public class Customer {
 	private String name;
 
 	@Column(unique = true)
-	@NotBlank(message = "Enter the email")
+	@Pattern(regexp = "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}", message = "Proper Email Required")
+	@NotBlank
 	private String email;
 
 	@Column(unique = true)
-	@NotNull
+	@NonNull
 	private Long phone;
 
-	@NotNull
+	@CreationTimestamp
+	@NonNull
 	private LocalDate dob;
 
 	@OneToOne(mappedBy = "customer")

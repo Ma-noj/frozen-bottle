@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -20,9 +22,10 @@ public class Product {
 	private String description;
 	private String type;
 	private double cost;
-	
+
 	@ManyToOne
 	@JoinColumn
+	@JsonIgnore
 	private FoodMenu menu;
 
 }

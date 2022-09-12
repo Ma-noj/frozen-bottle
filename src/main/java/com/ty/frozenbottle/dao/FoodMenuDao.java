@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.ty.frozenbottle.dto.FoodMenu;
+import com.ty.frozenbottle.dto.Product;
 import com.ty.frozenbottle.repository.FoodMenuRepository;
 
 @Repository
@@ -16,8 +17,13 @@ public class FoodMenuDao {
 		return foodMenuRepository.save(foodMenu);
 	}
 
-	public List<FoodMenu> getAllFoodMenu() {
-		return foodMenuRepository.findAll();
+	public List<Product> getAllProducts(int id) {
+		Optional<FoodMenu> optional = foodMenuRepository.findById(id);
+		if (optional.isPresent()) {
+			return optional.get().getProduct();
+		} else {
+			return null;
+		}
 	}
 
 	public FoodMenu getProductById(int id) {
