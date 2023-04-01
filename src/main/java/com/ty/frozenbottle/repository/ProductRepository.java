@@ -8,4 +8,5 @@ import com.ty.frozenbottle.dto.Product;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query(value = "SELECT u FROM Product u WHERE u.menu.id= ?1")
      Product getMenuById(int id);
+	
 }

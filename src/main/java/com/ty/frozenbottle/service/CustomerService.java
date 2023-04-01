@@ -25,6 +25,7 @@ public class CustomerService {
 		return new ResponseEntity<>(responseStructure, HttpStatus.CREATED);
 
 	}
+	
 
 	public ResponseEntity<ResponseStructure<Customer>> getCustomerById(int id) {
 		Customer customer = customerDao.getCustomerById(id);
@@ -69,8 +70,8 @@ public class CustomerService {
 
 	public ResponseEntity<ResponseStructure<Customer>> deleteCustomerById(int id) {
 		ResponseStructure<Customer> responseStructure = new ResponseStructure<Customer>();
-		 Customer c = customerDao.getCustomerById(id);
-		if (c!=null) {
+		Customer c = customerDao.getCustomerById(id);
+		if (c != null) {
 			customerDao.deleteCustomerById(id);
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("success");

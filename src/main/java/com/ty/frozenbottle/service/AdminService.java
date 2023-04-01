@@ -15,6 +15,7 @@ public class AdminService {
 	@Autowired
 	private AdminDao adminDao;
 
+	
 	public ResponseEntity<ResponseStructure<Admin>> saveAdmin(Admin admin) {
 		ResponseStructure<Admin> responseStructure = new ResponseStructure<Admin>();
 		responseStructure.setStatus(HttpStatus.CREATED.value());

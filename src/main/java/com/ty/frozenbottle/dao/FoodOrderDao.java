@@ -16,6 +16,7 @@ public class FoodOrderDao {
 		return foodOrderRepository.save(foodOrder);
 	}
 
+	
 	public List<FoodOrder> getAllFoodOrder() {
 		return foodOrderRepository.findAll();
 	}

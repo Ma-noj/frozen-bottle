@@ -15,6 +15,7 @@ public class AdminDao {
 		return adminRepository.save(admin);
 	}
 
+	
 	public Admin getAdminById(int id) {
 		Optional<Admin> optional = adminRepository.findById(id);
 		if (optional.isPresent()) {

@@ -6,4 +6,5 @@ import com.ty.frozenbottle.dto.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
+	
 }

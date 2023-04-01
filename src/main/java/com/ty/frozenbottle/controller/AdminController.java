@@ -54,5 +54,7 @@ public class AdminController {
 	public ResponseEntity<ResponseStructure<Admin>> deleteAdminById(@PathVariable int id) {
 		return adminservice.deleteAdminById(id);
 	}
+	
+	
 
 }

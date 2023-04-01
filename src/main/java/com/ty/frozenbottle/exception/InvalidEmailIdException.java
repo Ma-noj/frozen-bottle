@@ -15,4 +15,5 @@ public class InvalidEmailIdException extends RuntimeException {
 		return message;
 	}
 
+	
 }

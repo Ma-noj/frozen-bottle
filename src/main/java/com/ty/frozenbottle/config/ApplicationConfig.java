@@ -20,6 +20,7 @@ public class ApplicationConfig {
 	@Bean
 	public Docket getDocket() {
 
+		
 		Contact contact = new Contact("Testyantra Global Team", "https://testyantraglobal.com/",
 				"test@testyantraglobal.com");
 

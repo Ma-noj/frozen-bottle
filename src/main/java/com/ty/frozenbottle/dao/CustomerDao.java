@@ -16,6 +16,7 @@ public class CustomerDao {
 		return customerRepository.save(customer);
 	}
 
+	
 	public boolean deleteCustomerById(int id) {
 		Optional<Customer> optional = customerRepository.findById(id);
 		if (optional.isPresent()) {

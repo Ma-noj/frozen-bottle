@@ -29,6 +29,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 
 	}
 
+	
 	@ExceptionHandler(InvalidEmailIdException.class)
 	public ResponseEntity<ResponseStructure<String>> hand(InvalidEmailIdException exception) {
 		ResponseStructure<String> responseStructure = new ResponseStructure<String>();

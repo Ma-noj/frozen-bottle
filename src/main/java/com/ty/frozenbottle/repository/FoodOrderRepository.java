@@ -6,4 +6,5 @@ import com.ty.frozenbottle.dto.FoodOrder;
 
 public interface FoodOrderRepository extends JpaRepository<FoodOrder, Integer> {
 
+	
 }

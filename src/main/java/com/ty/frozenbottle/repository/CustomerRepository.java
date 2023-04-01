@@ -9,4 +9,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 	Customer findByPhone(long phone);
 
+	
 }

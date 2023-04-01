@@ -8,6 +8,7 @@ public class FrozenBottleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FrozenBottleApplication.class, args);
+	
 	}
 
 }
