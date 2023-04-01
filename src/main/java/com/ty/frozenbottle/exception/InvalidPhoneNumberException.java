@@ -13,7 +13,6 @@ public class InvalidPhoneNumberException extends RuntimeException {
 		return message;
 	}
 
-	
 	public long getPhone() {
 		return phone;
 	}
