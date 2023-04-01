@@ -12,12 +12,16 @@ import com.ty.frozenbottle.dto.FoodMenu;
 import com.ty.frozenbottle.dto.Product;
 import com.ty.frozenbottle.dto.ResponseStructure;
 import com.ty.frozenbottle.exception.IdNotFoundException;
+import com.ty.frozenbottle.repository.ProductRepository;
 
 @Service
 public class FoodMenuService {
 
 	@Autowired
 	private FoodMenuDao foodMenuDao;
+	
+	@Autowired
+	private ProductRepository repo;
 
 	public ResponseEntity<ResponseStructure<FoodMenu>> saveFoodMenu(FoodMenu foodMenu) {
 		ResponseStructure<FoodMenu> responseStructure = new ResponseStructure<FoodMenu>();
@@ -56,10 +60,15 @@ public class FoodMenuService {
 
 	public ResponseEntity<ResponseStructure<FoodMenu>> deleteProductById(int id) {
 		ResponseStructure<FoodMenu> responseStructure = new ResponseStructure<FoodMenu>();
-		if (foodMenuDao.deleteProductById(id)) {
+		FoodMenu f = foodMenuDao.getProductById(id);
+		if (f!=null) {
+			Product p = repo.getMenuById(id);
+			repo.delete(p);
+			foodMenuDao.deleteFoodMenu(f);
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("success");
-			responseStructure.setData(null);
+			responseStructure.setData(f);
+			return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 		}
 		throw new IdNotFoundException("Id not found:" + id);
 	}

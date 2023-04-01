@@ -38,10 +38,13 @@ public class AdminService {
 
 	public ResponseEntity<ResponseStructure<Admin>> deleteAdminById(int id) {
 		ResponseStructure<Admin> responseStructure = new ResponseStructure<Admin>();
-		if (adminDao.deleteAdminById(id)) {
+		Admin admin = adminDao.getAdminById(id);
+		if (admin!=null) {
+			adminDao.deleteAdminById(id);
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("success");
-			responseStructure.setData(null);
+			responseStructure.setData(admin);
+			return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 		}
 		throw new IdNotFoundException("Id not found:" + id);
 

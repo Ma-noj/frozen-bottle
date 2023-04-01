@@ -50,10 +50,12 @@ public class FoodOrderService {
 
 	public ResponseEntity<ResponseStructure<FoodOrder>> deleteFoodOrderById(int id) {
 		ResponseStructure<FoodOrder> responseStructure = new ResponseStructure<FoodOrder>();
-		if (foodOrderDao.deleteFoodOrderById(id)) {
+		FoodOrder f = foodOrderDao.getFoodOrderById(id);
+		if (f!=null) {
+			foodOrderDao.deleteFoodOrderById(id);
 			responseStructure.setStatus((HttpStatus.OK.value()));
 			responseStructure.setMessage("REMOVED SUCCESSFULLY");
-			responseStructure.setData(null);
+			responseStructure.setData(f);
 			return new ResponseEntity<ResponseStructure<FoodOrder>>(responseStructure, HttpStatus.OK);
 		} else {
 			throw new IdNotFoundException("Id " + id + " Not found");

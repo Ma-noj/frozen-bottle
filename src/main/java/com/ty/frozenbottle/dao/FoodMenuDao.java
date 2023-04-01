@@ -45,4 +45,8 @@ public class FoodMenuDao {
 		}
 	}
 
+	public void deleteFoodMenu(FoodMenu f) {
+		foodMenuRepository.delete(f);	
+	}
+
 }

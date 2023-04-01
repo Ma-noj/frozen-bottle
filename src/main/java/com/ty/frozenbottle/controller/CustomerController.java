@@ -49,7 +49,7 @@ public class CustomerController {
 
 	@ApiOperation(value = "Get customers by email", notes = "input is customer obj and return same obj with email ")
 	@ApiResponses(value = { @ApiResponse(code = 404, message = "arithematic exception") })
-	@GetMapping(value = "/{email}", consumes = { MediaType.APPLICATION_XML_VALUE,
+	@GetMapping(value = "email/{email}", consumes = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_XML_VALUE,
 					MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<ResponseStructure<Customer>> findCustomerByEmail(@PathVariable String email) {

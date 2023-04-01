@@ -11,9 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Data
 @Entity
 public class FoodMenu {
 
@@ -25,6 +24,40 @@ public class FoodMenu {
 
 	@OneToOne
 	@JoinColumn
+	@JsonIgnore
 	private Admin admin;
+
+	public FoodMenu() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	@Override
+	public String toString() {
+		return "FoodMenu [id=" + id + ", product=" + product + ", admin=" + admin + "]";
+	}
 
 }

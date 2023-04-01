@@ -69,10 +69,13 @@ public class CustomerService {
 
 	public ResponseEntity<ResponseStructure<Customer>> deleteCustomerById(int id) {
 		ResponseStructure<Customer> responseStructure = new ResponseStructure<Customer>();
-		if (customerDao.deleteCustomerById(id)) {
+		 Customer c = customerDao.getCustomerById(id);
+		if (c!=null) {
+			customerDao.deleteCustomerById(id);
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("success");
-			responseStructure.setData(null);
+			responseStructure.setData(c);
+			return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 		}
 		throw new IdNotFoundException("Id not found:" + id);
 	}
